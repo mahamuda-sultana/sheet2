@@ -1,22 +1,34 @@
+//Course Title :Competitive programming Sessional
+//Course Code :CCE-2310
+//Mirza raquib
 #include<bits/stdc++.h>
 using namespace std;
 int main()
 {
-    int n,count;
+    long long n,i,j,k;
     cin>>n;
-    for(int i=1;i<=n;i++)
+    bool a[n+1];
+    for(i=0; i<=n;i++)
     {
-        count = 0;
-        for(int j=1;j<=i;j++)
+        a[i]=true;
+    }
+    //multiplication or product
+    for(j=2; j<=sqrt(n); j++)
+    {
+        //actual check
+        if(a[j] == true)
         {
-            if(i%j==0)
+            for(k=j+j; k<=n; k++)
             {
-                count++;
+                if(k % j == 0)
+                {
+                    a[k]=0;
+                }
             }
         }
-        if(count == 2)
-        {
-            cout<<i<<" ";
-        }
+    }
+    for(i=2; i<=n; i++)
+    {
+        if(a[i]) cout << i << " ";
     }
 }
